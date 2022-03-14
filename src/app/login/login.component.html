@@ -1,0 +1,41 @@
+<section class="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card mt-5 bg-dark text-light">
+                    <div class="card-body">
+                        <h4>Login</h4>
+                        <hr>
+                        <form #loginPost="ngForm" (ngSubmit)="getLoginData(loginPost.value)">
+                            <input type="email" name="email" id="email" class="form-control mb-2" placeholder="E-mail..." ngModel required autocomplete="false">
+                            <input type="password" name="password" id="password" class="form-control mb-2" placeholder="Password..." ngModel required autocomplete="false">
+                            <button class="btn btn-primary" type="submit">Login</button>
+                            <button class="btn btn-info" style="margin-left: 10px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #registerPost="ngForm" (ngSubmit)="getRegisterData(registerPost.value)">
+                    <input type="text" name="name" id="register-name" class="form-control mb-2" placeholder="Name..." ngModel required autocomplete="false">
+                    <input type="email" name="email" id="register-email" class="form-control mb-2" placeholder="E-mail..." ngModel required autocomplete="false"> 
+                    <input type="password" name="password" id="register-password" class="form-control mb-2" placeholder="Password..." ngModel required autocomplete="false">
+                    <button class="btn btn-success" type="submit">Register</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

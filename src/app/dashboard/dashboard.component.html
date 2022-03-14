@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addUser">Add user</button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-lg-4 mb-3" *ngFor="let user of users">
+            <div class="card bg-dark" style="height: 100%;">
+                <div class="card-body text-light">
+                    <p><strong>ID:</strong> {{user['id']}}</p>
+                    <p><strong>Name:</strong> {{user['name']}}</p>
+                    <p><strong>E-mail:</strong> {{user['email']}}</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" style="margin-right: 10px;" type="button" data-bs-toggle="modal" data-bs-target="#edit-user" (click)="getUser(user['id'])">Edit</button>
+                    <button class="btn btn-danger btn-delete" (click)="deleteUser(user['id'])">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #registerPost="ngForm" (ngSubmit)="getRegisterData(registerPost.value)">
+                    <input type="text" name="name" id="register-name" class="form-control mb-2" placeholder="Name..." ngModel required autocomplete="false">
+                    <input type="email" name="email" id="register-email" class="form-control mb-2" placeholder="E-mail..." ngModel required autocomplete="false">
+                    <input type="password" name="password" id="register-password" class="form-control mb-2" placeholder="Password..." ngModel required autocomplete="false">
+                    <button class="btn btn-success" type="submit">Register</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="edit-user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #editPost="ngForm" (ngSubmit)="getEditData(editPost.value)">
+                    <input type="text" name="name" id="edit-name" class="form-control mb-2" placeholder="Name..." [(ngModel)]="user['name']" required autocomplete="false" value="aaaa">
+                    <input type="email" name="email" id="edit-email" class="form-control mb-2" placeholder="E-mail..." [(ngModel)]="user['email']" required autocomplete="false">
+                    <button class="btn btn-success" type="submit">Save</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
